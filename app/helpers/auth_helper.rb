@@ -1,2 +1,2 @@
-Module AuthHelper
+module AuthHelper
 end
