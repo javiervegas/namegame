@@ -1,0 +1,5 @@
+Hi, <%=@profile.first_name%> <%= @profile.current_status%> and your <%= @connections.size %> connections
+ <% @connections.each do |connection| %>
+  <div><img src="<%= connection.picture_url %>"><%= connection.first_name %>, <%= connection.headline %>, <%= connection.location.name %> </div>
+ <% end %>
+
