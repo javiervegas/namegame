@@ -41,15 +41,8 @@ class AuthController < ApplicationController
       client.update_status("schhmurfs!")
     end
     @profile = client.profile
-    @connections = client.connections
-    updates = client.network_updates(:scope => "self").updates
-    updates.each do |update|
-      likes =  client.likes(update.update_key)
-      likes.each do |like|
-        print "#{update.update_key} liked by #{like.profile.first_name}\n"
-      end
-    end
-    @updates = client.network_updates(:scope => "self").updates
+    @connections = client.connections.find_all{|connection| !connection.picture_url.empty?}.sort_by{ rand }.slice(0...5)
+    #@updates = client.network_updates(:type => "SHAR").updates
   end
 end
 

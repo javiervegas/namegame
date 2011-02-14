@@ -1,8 +1,4 @@
 Hi, <%=@profile.first_name%> <%= @profile.current_status%> and your <%= @connections.size %> connections
 <% @connections.find_all{|connection| !connection.picture_url.empty?}.each do |connection| %>
-  <div><img src="<%= connection.picture_url %>"><%= connection.first_name %>, <%= connection.headline %>, <%= connection.location.name %> </div>
- <% end %>
- <div>These are your updates:
- <% @updates.each do |update|  %>
-   <div><%= update.profile.first_name %> <%= update.profile.current_status %></div>
+  <div><img src="<%= connection.picture_url %>"><%= connection.first_name %>, <%= connection.headline %>, <%= connection.location.name %></div>
  <% end %>
