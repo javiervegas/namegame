@@ -29,6 +29,22 @@ class AuthController < ApplicationController
     @mistery = connections.sort_by{ rand }.first
     @connections = connections.sort_by{ rand }
     #@updates = client.network_updates(:type => "SHAR").updates
+
+    @oauth_verifier = params[:oauth_verifier]
+    @oauth_token = params[:oauth_token]
+    if !params[:mistery].nil?
+      @ok = params[:ok].to_i
+      @ko = params[:ko].to_i
+      if (params[:guess]==params[:mistery])
+        @ok+=1
+        @result = "Yes, that was #{params[:guess]}"
+      else
+        @ko+=1
+        @result = "No, that was #{params[:guess]}, not #{params[:mistery]}"
+      end
+    else
+      @ok=@ko=0
+    end
   end
 
   def get_client
