@@ -25,7 +25,7 @@ class AuthController < ApplicationController
       client.authorize_from_access(session[:atoken], session[:asecret])
     end
     @profile = client.profile
-    connections = client.connections.find_all{|connection| !connection.picture_url.empty?}.sort_by{ rand }.slice(0...5)
+    connections = client.connections.find_all{|connection| !connection.picture_url.nil?}.sort_by{ rand }.slice(0...5)
     @mistery = connections.sort_by{ rand }.first
     @connections = connections.sort_by{ rand }
     #@updates = client.network_updates(:type => "SHAR").updates
