@@ -51,6 +51,7 @@ Linkedin::Application.routes.draw do
   # root :to => "welcome#index"
   root :to => "auth#index"
   match 'auth/callback', :to => 'auth#callback', :as => :auth
+  match 'guess', :to => 'auth#callback', :as => :guess
 
   # See how all your routes lay out with "rake routes"
 

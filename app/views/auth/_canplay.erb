@@ -4,7 +4,7 @@
   <% end %>
   <div id="result"><%= @result %></div>
   <div id="headline">Who is <%= @mistery.first_name %>?</div>
-  <% form_tag() do %>  
+  <% form_tag("/guess") do %>  
     <%= hidden_field(:mistery, :first_name)  %>  
     <input type="hidden" name="ok" value="<%= @ok %>">
     <input type="hidden" name="ko" value="<%= @ko %>">
