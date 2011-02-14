@@ -2,4 +2,10 @@ Hi, <%=@profile.first_name%> <%= @profile.current_status%> and your <%= @connect
  <% @connections.each do |connection| %>
   <div><img src="<%= connection.picture_url %>"><%= connection.first_name %>, <%= connection.headline %>, <%= connection.location.name %> </div>
  <% end %>
-
+ <div>These are your updates:
+ <% @updates.each do |update|  %>
+   <div>ID: <%= update.update_key %> TYPE: <%= update.update_type %> CM <%= update.timestamp %> 
+     <%= update.is_commentable? %> <%= !update.is_commentable? %> <br> 
+     <%= update.profile.current_status %><br>
+     <%= update.doco %>
+ <% end %>

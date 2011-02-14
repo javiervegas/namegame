@@ -31,9 +31,25 @@ class AuthController < ApplicationController
     else
       client.authorize_from_access(session[:atoken], session[:asecret])
     end
-    #client.update_status('is playing with the LinkedIn API')
+    if !session[:pdate].nil?
+      client.share({
+         :comment => "Testing out the LinkedIn API",
+         :title => "Sfhare",
+         :url => "http://www.linkedin.com",
+         :image_url => "http://www.southdacola.com/blog/wp-content/uploads/2009/09/scooby-doo.jpeg"
+     })
+      client.update_status("schhmurfs!")
+    end
     @profile = client.profile
     @connections = client.connections
+    updates = client.network_updates(:scope => "self").updates
+    updates.each do |update|
+      likes =  client.likes(update.update_key)
+      likes.each do |like|
+        print "#{update.update_key} liked by #{like.profile.first_name}\n"
+      end
+    end
+    @updates = client.network_updates(:scope => "self").updates
   end
 end
 
