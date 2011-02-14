@@ -1,0 +1,18 @@
+<div id="contest">
+  <% if (@ok+@ko) > 0 %>
+    <div id="score"><%= (100*@ok)/(@ok+@ko) %>% (<%= @ok %> out of <%= @ko+@ok %>)</div>
+  <% end %>
+  <div id="result"><%= @result %></div>
+  <div id="headline">Who is <%= @mistery.first_name %>?</div>
+  <% form_tag() do %>  
+    <%= hidden_field(:mistery, :first_name)  %>  
+    <input type="hidden" name="ok" value="<%= @ok %>">
+    <input type="hidden" name="ko" value="<%= @ko %>">
+    <input type="hidden" name="mistery" value="<%= @mistery.first_name %>">
+    <% @connections.each do |connection| %>
+      <span id="entry">
+        <input type="image" src="<%= connection.picture_url %>" alt="Submit button"  name="guess" value="<%= connection.first_name %>">
+      </span>
+    <% end %>
+  <% end %>  
+</div>
