@@ -2,7 +2,14 @@
 <h2>Welcome to the Name Game</h2>
 <div id="contest">
   <div>Who is <%= @mistery.first_name %>?</div>
-  <% @connections.find_all{|connection| !connection.picture_url.empty?}.each do |connection| %>
-    <span><a href="<%= request.request_uri %>&guess=<%= connection.id %>&mistery=<%= @mistery.id%>"><img src="<%= connection.picture_url %>"></a></span>
+  <form action="<%= request.request_uri %>">
+  <input type="hidden" name="mistery" value="<%= @mistery.first_name %>">
+  <input type="hidden" name="ok" value="">
+  <input type="hidden" name="ko" value="">
+  <% @connections.each do |connection| %>
+    <span>
+      <input type="image" src="<%= connection.picture_url %>" alt="Submit button"  name="guess" value="<%= connection.first_name %>">
+    </span>
   <% end %>
+  </form>
  </div>
