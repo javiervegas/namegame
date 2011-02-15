@@ -1,0 +1,6 @@
+%h1 Hi #{@profile.first_name}!
+%h2 Welcome to the Name Game
+- if (@connections.size < 5) 
+  = render :partial => "cantplay"
+- else
+  = render :partial => "canplay"

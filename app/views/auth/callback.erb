@@ -1,7 +1,0 @@
-<h1>Hi, <%=@profile.first_name%>!</h1>
-<h2>Welcome to the Name Game</h2>
-<% if @connections.size < 5 %>
-<%= render "cantplay" %>
-<% else %>
-<%= render "canplay" %>
-<% end %>
