@@ -8,10 +8,45 @@ body
   .header
     font-size: 4em
     color: white
-    background-color: blue
+    background-color: !yellow_dark
     margin-top: -.3em
     height: 88px
     text-align: center 
+
+  #contest
+    .entry
+      height: 88px 
+      width: 20%
+
+    .whois
+
+    .result
+      margin-top: .3em
+      font-size: 2em
+      .right
+        color: green
+        width: 85%
+        float: left
+      .wrong
+        color: red
+        width: 85%
+        float: left
+      .score
+        -moz-border-radius: 15px
+        -webkit-border-radius: 15px
+        border-radius: 15px
+        float: right
+        text-align: center
+        background-color: !yellow_light
+        margin-top: -.3em
+        width: 15%
+        height: 84px
+        vertical-align: middle
+        .percent
+          font-size: 1.2em
+          font-weight: bold
+        .totals
+          font-size: .6em
 
 body, p, th, td
   font-family: "Helvetica Neue", Helvetica, sans-serif

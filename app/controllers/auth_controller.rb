@@ -25,18 +25,21 @@ class AuthController < ApplicationController
     else
       client.authorize_from_access(session[:atoken], session[:asecret])
     end
+    @limit = 5
     @profile = client.profile
-    connections = client.connections.find_all{|connection| !connection.picture_url.andand.empty?}.sort_by{ rand }.slice(0...5)
+    connections = client.connections.find_all{|connection| !connection.picture_url.andand.empty?}.sort_by{ rand }.slice(0...@limit)
     @mistery = connections.sort_by{ rand }.first
     @connections = connections.sort_by{ rand }
     #@updates = client.network_updates(:type => "SHAR").updates
 
     @oauth_verifier = params[:oauth_verifier]
     @oauth_token = params[:oauth_token]
-    if !params[:mistery].nil?
+    @new = params[:mistery].nil?
+    if !@new
       @ok = params[:ok].to_i
       @ko = params[:ko].to_i
-      if (params[:guess]==params[:mistery])
+      @right = (params[:guess]==params[:mistery])
+      if @right
         @ok+=1
         @result = "Yes, that was #{params[:guess]}"
       else

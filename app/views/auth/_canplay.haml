@@ -1,12 +1,19 @@
 #contest
-  - if (@ok+@ko > 0)
-    .score #{(100*@ok)/(@ok+@ko)}% (#{@ok} out of #{@ko+@ok})
-  .result= @result
-  .headline Who is #{@mistery.first_name}?
+  .result
+    - if (@right)
+      #span.right= @result
+    - else    
+      #span.wrong= @result
+    - if (@ok+@ko > 0)
+      #span.score 
+        .percent  #{(100*@ok)/(@ok+@ko)}%
+        .totals (#{@ok} out of #{@ko+@ok})
+  .whois
+    %h1 Who is #{@mistery.first_name}?
   - form_tag("/guess") do
     = hidden_field(:mistery, :first_name)
     <input type="hidden" name="ok" value="#{@ok}">
     <input type="hidden" name="ko" value="#{@ko}">
     <input type="hidden" name="mistery" value="#{@mistery.first_name}">
     - @connections.each do |connection|
-      <input type="image" src="#{connection.picture_url}" alt="Submit button"  name="guess" value="#{connection.first_name}">
+      %span.entry <input type="image" src="#{connection.picture_url}" alt="Submit button"  name="guess" value="#{connection.first_name}">&nbsp;&nbsp;&nbsp;&nbsp;
