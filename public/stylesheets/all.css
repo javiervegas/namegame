@@ -1,0 +1,44 @@
+body {
+  width: 700px;
+  margin: 1em auto; }
+  body .header {
+    font-size: 4em;
+    color: white;
+    background-color: #ffaf00;
+    margin-top: -0.3em;
+    height: 88px;
+    text-align: center; }
+  body #contest .entry {
+    height: 88px;
+    width: 20%; }
+  body #contest .result {
+    margin-top: 0.3em;
+    font-size: 2em; }
+    body #contest .result .right {
+      color: green;
+      width: 85%;
+      float: left; }
+    body #contest .result .wrong {
+      color: red;
+      width: 85%;
+      float: left; }
+    body #contest .result .score {
+      -moz-border-radius: 15px;
+      -webkit-border-radius: 15px;
+      border-radius: 15px;
+      float: right;
+      text-align: center;
+      background-color: #ffd953;
+      margin-top: -0.3em;
+      width: 15%;
+      height: 84px;
+      vertical-align: middle; }
+      body #contest .result .score .percent {
+        font-size: 1.2em;
+        font-weight: bold; }
+      body #contest .result .score .totals {
+        font-size: 0.6em; }
+
+body, p, th, td {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  margin-top: 1em; }
